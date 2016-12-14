@@ -362,11 +362,13 @@ static void undefineVariables(Node *node)
 }
 
 
-static void Rule_compile_c2(Node *node)
+static void Rule_compile_c2( Node* __nonnull node)
 {
-  assert(node);
+  assert(node != nil);
   assert(Rule == node->type);
 
+  if (node == NULL) return;
+  
   if (!node->rule.expression)
     fprintf(stderr, "rule '%s' used but not defined\n", node->rule.name);
   else
@@ -868,7 +870,7 @@ int consumesInput(Node *node)
 }
 
 
-void Rule_compile_c(Node *node)
+void Rule_compile_c(Node* __nonnull node)
 {
   Node *n;
 
